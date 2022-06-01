@@ -10,10 +10,11 @@ class Anuncios {
     }
 
     // Return the function that process user's sent messages
+    // "await driver.sendToRoom('Message', message.rid)"" responds to the room;
     get processSentMessages() {
         return async(err, message, messageOptions) => {
             if(this.botId === message.u._id) return
-            // await driver.sendToRoom('BLANK TEST MESSAGE RESPONSE', message.rid);
+            return
         }
     }
 
@@ -52,6 +53,8 @@ class Anuncios {
         await this.login();
         await this.joinRooms();
         await this.subscribeToMessages();
+        // React if needed
+        // await this.reactToMessages();
         this.anuncioSchedule.start()
     }
 }
