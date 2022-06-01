@@ -1,3 +1,36 @@
+<!-- @2022-06-01T18:14:44-03:00
+@ LATEST-VERSION(DONT REMOVE THIS LINE)-->
+# 1.1.0 
+
+### ✨**Features**:
+
+2022-06-01 **Diego Sousa**: add docker compose [854c859](https://gitlab.com/diegodev.geomais/rocket-bot/commits/854c859)
+
+2022-06-01 **Diego Sousa**: add messages to json shared file [28eebcf](https://gitlab.com/diegodev.geomais/rocket-bot/commits/28eebcf)
+
+2022-06-01 **Diego Sousa**: add typescript and eslint [b21016a](https://gitlab.com/diegodev.geomais/rocket-bot/commits/b21016a)
+
+2022-06-01 **Diego Sousa**: add dynamic schedule creation [dadd7b3](https://gitlab.com/diegodev.geomais/rocket-bot/commits/dadd7b3)
+
+### 🐛**Fixes**:
+
+2022-06-01 **Diego Sousa**: docker compose volume [3249c4f](https://gitlab.com/diegodev.geomais/rocket-bot/commits/3249c4f)
+
+### 🔥**Refactors**:
+
+2022-06-01 **Diego Sousa**: adjust interval [a78d689](https://gitlab.com/diegodev.geomais/rocket-bot/commits/a78d689)
+
+2022-06-01 **Diego Sousa**: * [f7c3965](https://gitlab.com/diegodev.geomais/rocket-bot/commits/f7c3965)
+
+2022-06-01 **Diego Sousa**: adjust params [06324e3](https://gitlab.com/diegodev.geomais/rocket-bot/commits/06324e3)
+
+2022-06-01 **Diego Sousa**: remove env spacing [180fb34](https://gitlab.com/diegodev.geomais/rocket-bot/commits/180fb34)
+
+2022-06-01 **Diego Sousa**: inject dependency scheduler [283d63e](https://gitlab.com/diegodev.geomais/rocket-bot/commits/283d63e)
+
+### 🔧**Chores**:
+
+2022-06-01 **Diego Sousa**: add changelog [fd9f4ba](https://gitlab.com/diegodev.geomais/rocket-bot/commits/fd9f4ba)
 <!-- @2022-06-01T12:45:05-03:00
 @ LATEST-VERSION(DONT REMOVE THIS LINE)-->
 # 1.0.0 
