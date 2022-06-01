@@ -1,0 +1,7 @@
+[
+  {
+	"interval": "*/10 * * * * *",
+	"message": "@all Boa tarde!!!!! Não esqueçam de iniciar o cronômetro de horas das tarefas para nos ajudar com a estimativa!! :asyncparrot:",
+	"room": "TesteAnuncios"
+  }
+]

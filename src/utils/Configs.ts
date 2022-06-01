@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
 import { Message, Options } from './interfaces';
+import { readFileSync } from 'fs';
+import path from 'path';
 dotenv.config();
 
 const options: Options = {
@@ -11,13 +13,13 @@ const options: Options = {
 	ROOMS: process.env.ROOMS?.split(',') ?? []
 };
 
-const messages: Message[] = [{
-	interval: '*/10 * * * * *',
-	message: '@all Boa tarde!!!!! Não esqueçam de iniciar o cronômetro de horas das tarefas para nos ajudar com a estimativa!! :asyncparrot:',
-	room: 'TesteAnuncios'
-}];
+const rootSrc = path.join(__dirname, '../');
+
+const jsonMessages = readFileSync(`${rootSrc}/shared/messages.json`).toString();
+const messages: Message[] = JSON.parse(jsonMessages);
 
 export {
 	messages,
-	options
+	options,
+	rootSrc
 };
