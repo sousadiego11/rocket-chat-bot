@@ -33,10 +33,7 @@ class Anuncios {
     }
 
     async reactToMessages() {
-        // Avoid class reference conflicts
-        const reactFunc = this.processMessages;
-
-        this.msgloop = await driver.reactToMessages( reactFunc );
+        this.msgloop = await driver.reactToMessages( this.processMessages );
     }
 
     async sendToRoom() {
