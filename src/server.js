@@ -1,6 +1,7 @@
 import { driver } from '@rocket.chat/sdk'
 import { options } from './utils/options.js';
 import dotenv from 'dotenv'
+import nodeCron from 'node-cron';
 dotenv.config()
 
 class Anuncios {
@@ -9,11 +10,17 @@ class Anuncios {
     }
 
     // Return the function that process user's sent messages
-    get processMessages() {
+    get processSentMessages() {
         return async(err, message, messageOptions) => {
             if(this.botId === message.u._id) return
-            await driver.sendToRoom('BLANK TEST MESSAGE RESPONSE', message.rid);
+            // await driver.sendToRoom('BLANK TEST MESSAGE RESPONSE', message.rid);
         }
+    }
+
+    get anuncioSchedule() {
+        return nodeCron.schedule('*/3 * * * *', async () => {
+            await this.sendToRoom('@all Boa tarde!!!!! Não esqueçam de iniciar o cronômetro de horas das tarefas para nos ajudar com a estimativa!! :asyncparrot:')
+        })   
     }
 
     async connect() {
@@ -33,11 +40,11 @@ class Anuncios {
     }
 
     async reactToMessages() {
-        this.msgloop = await driver.reactToMessages( this.processMessages );
+        this.msgloop = await driver.reactToMessages( this.processSentMessages );
     }
 
-    async sendToRoom() {
-        this.sent = await driver.sendToRoom( this.BOTNAME + ' is listening ...', this.ROOMS[0]);
+    async sendToRoom(message = '') {
+        this.sent = await driver.sendToRoom( message, this.ROOMS[0]);
     }
 
     async runBot() {
@@ -45,8 +52,7 @@ class Anuncios {
         await this.login();
         await this.joinRooms();
         await this.subscribeToMessages();
-        await this.reactToMessages();
-        await this.sendToRoom();
+        this.anuncioSchedule.start()
     }
 }
 
