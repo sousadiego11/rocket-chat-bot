@@ -1,9 +1,9 @@
 
-import { Anuncios } from './Anuncios/';
+import { Bot } from './Bot/';
 import { Scheduler } from './Scheduler/';
 import { options } from './utils/';
 
 const scheduler = new Scheduler(options.ROOMS);
-const anuncios = new Anuncios(options, scheduler);
+const bot = new Bot(options, scheduler);
 
-anuncios.runBot();
+bot.run();

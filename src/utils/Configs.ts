@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import { Message, Options } from './interfaces';
 import { readFileSync } from 'fs';
 import path from 'path';
+
 dotenv.config();
 
 const options: Options = {
@@ -13,13 +14,11 @@ const options: Options = {
 	ROOMS: process.env.ROOMS?.split(',') ?? []
 };
 
-const rootSrc = path.join(__dirname, '../');
-
-const jsonMessages = readFileSync(`${rootSrc}/shared/messages.json`).toString();
+const rootSrc = path.join(__dirname, '../../');
+const jsonMessages = readFileSync(`${rootSrc}/messages.json`).toString();
 const messages: Message[] = JSON.parse(jsonMessages);
 
 export {
 	messages,
-	options,
-	rootSrc
+	options
 };

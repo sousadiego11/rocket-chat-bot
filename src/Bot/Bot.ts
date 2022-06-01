@@ -3,7 +3,7 @@ import { driver } from '@rocket.chat/sdk';
 import { Options } from '../utils/interfaces';
 import { Scheduler } from '../Scheduler';
 
-export class Anuncios {
+export class Bot {
 	schedules = [];
 
 	conn!: any;
@@ -40,7 +40,7 @@ export class Anuncios {
 		this.subscribed = await driver.subscribeToMessages();
 	}
 
-	async runBot() {
+	async run() {
 		await this.connect();
 		await this.login();
 		await this.joinRooms();
