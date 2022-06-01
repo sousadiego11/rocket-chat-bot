@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@rocket.chat/sdk": "^0.2.9-2"
+    "@rocket.chat/sdk": "^0.2.9-2",
+    "dotenv": "^16.0.1"
   }
 }

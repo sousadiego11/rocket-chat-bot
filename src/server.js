@@ -1,5 +1,7 @@
 import { driver } from '@rocket.chat/sdk'
 import { options } from './utils/options.js';
+import dotenv from 'dotenv'
+dotenv.config()
 
 class Anuncios {
     constructor(connectionOptions) {
