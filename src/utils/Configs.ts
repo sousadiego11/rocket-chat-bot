@@ -15,7 +15,9 @@ const options: Options = {
 };
 
 const rootSrc = path.join(__dirname, '../../');
-const jsonMessages = readFileSync(`${rootSrc}/messages.json`).toString();
+console.log('🚀 ~ file: Configs.ts ~ line 18 ~ rootSrc', rootSrc);
+const jsonMessages = readFileSync(`${rootSrc}/shared/messages.json`).toString();
+console.log('🚀 ~ file: Configs.ts ~ line 20 ~ jsonMessages', jsonMessages);
 const messages: Message[] = JSON.parse(jsonMessages);
 
 export {

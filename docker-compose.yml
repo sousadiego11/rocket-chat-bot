@@ -6,4 +6,4 @@ services:
     ports:
       - "5002:5002"
     volumes:
-      - .:/messages.json
+      - ./shared:/app/shared
