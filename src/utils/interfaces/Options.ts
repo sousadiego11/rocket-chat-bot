@@ -1,4 +1,3 @@
-import { Scheduler } from '../../Scheduler';
 
 export interface Options {
   HOST: string,
@@ -6,6 +5,5 @@ export interface Options {
 	PASS: string,
 	BOTNAME: string,
 	SSL: boolean,
-	ROOMS: string[],
-  scheduler?: Scheduler
+	ROOMS: string[]
 }

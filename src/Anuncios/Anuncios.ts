@@ -4,9 +4,7 @@ import { Options } from '../utils/interfaces';
 import { Scheduler } from '../Scheduler';
 
 export class Anuncios {
-
 	schedules = [];
-	scheduler!: Scheduler;
 
 	conn!: any;
 	botId!: any;
@@ -19,7 +17,10 @@ export class Anuncios {
 	PASS!: string;
 	ROOMS!: string[];
 
-	constructor(connectionOptions: Options) {
+	constructor(
+		connectionOptions: Options,
+    private readonly scheduler: Scheduler
+	) {
 		Object.assign(this, connectionOptions);
 	}
 
