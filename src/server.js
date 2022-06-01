@@ -1,21 +1,12 @@
-const { driver } = require('@rocket.chat/sdk');
-
-const options = {
-    HOST: 'rocketchat.geomais.com.br',
-    USER: 'anuncio.bot',
-    PASS: 'anunciobot123',
-    BOTNAME: 'Anúncios',
-    SSL: true,
-    ROOMS: ['TesteAnuncios']  
-}
+import { driver } from '@rocket.chat/sdk'
+import { options } from './utils/options.js';
 
 class Anuncios {
-    botId = -1
-
     constructor(connectionOptions) {
         Object.assign(this, connectionOptions)
     }
 
+    // Return the function that process user's sent messages
     get processMessages() {
         return async(err, message, messageOptions) => {
             if(this.botId === message.u._id) return
@@ -24,7 +15,7 @@ class Anuncios {
     }
 
     async connect() {
-        return driver.connect({ host: this.HOST, useSsl: this.SSL });
+        this.conn = await driver.connect({ host: this.HOST, useSsl: this.SSL });
     }
 
     async login() {
@@ -32,20 +23,22 @@ class Anuncios {
     }
 
     async joinRooms(){
-        return driver.joinRooms( this.ROOMS );
+        this.roomsJoined = await driver.joinRooms( this.ROOMS );
     }
 
     async subscribeToMessages() {
-        return driver.subscribeToMessages();
+        this.subscribed = await driver.subscribeToMessages();
     }
 
     async reactToMessages() {
-        const reactFunc = this.processMessages
-        return driver.reactToMessages( reactFunc );
+        // Avoid class reference conflicts
+        const reactFunc = this.processMessages;
+
+        this.msgloop = await driver.reactToMessages( reactFunc );
     }
 
     async sendToRoom() {
-        return driver.sendToRoom( this.BOTNAME + ' is listening ...', this.ROOMS[0]);
+        this.sent = await driver.sendToRoom( this.BOTNAME + ' is listening ...', this.ROOMS[0]);
     }
 
     async runBot() {
