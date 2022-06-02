@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { Message, Options } from './interfaces';
+import { Message, Options, Response } from './interfaces';
 import { readFileSync } from 'fs';
 import path from 'path';
 
@@ -15,12 +15,16 @@ const options: Options = {
 };
 
 const rootSrc = path.join(__dirname, '../../');
-console.log('🚀 ~ file: Configs.ts ~ line 18 ~ rootSrc', rootSrc);
 const jsonMessages = readFileSync(`${rootSrc}/shared/messages.json`).toString();
-console.log('🚀 ~ file: Configs.ts ~ line 20 ~ jsonMessages', jsonMessages);
+const jsonResponses = readFileSync(`${rootSrc}/shared/responses.json`).toString();
 const messages: Message[] = JSON.parse(jsonMessages);
+const responses: Response[] = JSON.parse(jsonResponses);
+
+console.log('🚀 ~ file: Configs.ts ~ line 21 ~ messages', messages);
+console.log('🚀 ~ file: Configs.ts ~ line 23 ~ responses', responses);
 
 export {
 	messages,
-	options
+	options,
+	responses
 };
