@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { driver } from '@rocket.chat/sdk';
 import nodeCron from 'node-cron';
 import { messages } from '../utils/';
