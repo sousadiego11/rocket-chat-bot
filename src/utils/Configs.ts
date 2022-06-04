@@ -14,9 +14,9 @@ const options: Options = {
 	ROOMS: process.env.ROOMS?.split(',') ?? []
 };
 
-const rootSrc = path.join(__dirname, '../../');
-const jsonMessages = readFileSync(`${rootSrc}/shared/messages.json`).toString();
-const jsonResponses = readFileSync(`${rootSrc}/shared/responses.json`).toString();
+const root = path.join(__dirname, '../../');
+const jsonMessages = readFileSync(`${root}/shared/messages.json`).toString();
+const jsonResponses = readFileSync(`${root}/shared/responses.json`).toString();
 const messages: Message[] = JSON.parse(jsonMessages);
 const responses: Response[] = JSON.parse(jsonResponses);
 

@@ -2,7 +2,7 @@
 import { driver } from '@rocket.chat/sdk';
 import { Options } from '../utils/interfaces';
 import { Scheduler } from '../Scheduler';
-import { regexMatchReplaceUser, regexReplaceSpacesLowercase, responses } from '../utils';
+import { matchReplaceUser, replaceSpecialCharsLowercase, responses } from '../utils';
 
 export class Bot {
 	schedules = [];
@@ -27,12 +27,12 @@ export class Bot {
 
 	get processSentMessages() {
 		return async(err: any, message: any) => {
-			const response = responses.find((r) => regexReplaceSpacesLowercase(r.incoming) === regexReplaceSpacesLowercase(message.msg));
+			const response = responses.find((r) => replaceSpecialCharsLowercase(r.incoming) === replaceSpecialCharsLowercase(message.msg));
 
 			if (err) return console.error(err);
 			if (!response || this.botId === message.u._id) return;
 
-			const messageWithUser = regexMatchReplaceUser(response.response, message.u.name);
+			const messageWithUser = matchReplaceUser(response.response, message.u.name);
 			await driver.sendToRoom(messageWithUser, message.rid);
 		};
 	}
