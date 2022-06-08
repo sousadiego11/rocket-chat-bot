@@ -9,7 +9,9 @@ const isValidMatch = (incoming: string, input: string): boolean => {
 	const matchesArray = input.match(matchKeysRegex) ?? [];
 	const hasBotNameInMessage = matchBotAliasRegex.test(input);
 
-	return  hasBotNameInMessage && matchesArray.length >= incomingArray?.length;
+	const validMatch = hasBotNameInMessage && matchesArray.length >= incomingArray?.length;
+
+	return  validMatch;
 };
 
 export {
