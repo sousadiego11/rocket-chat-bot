@@ -1,2 +1,2 @@
-export * from './configs';
+export * from './Configs';
 export * from './functions';
