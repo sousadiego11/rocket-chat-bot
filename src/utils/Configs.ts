@@ -11,8 +11,7 @@ const options: Options = {
 	PASS: process.env.PASS ?? '',
 	BOTNAME: process.env.BOTNAME ?? '',
 	SSL: Boolean(process.env.SSL) ?? false,
-	ROOMS: process.env.ROOMS?.split(',') ?? [],
-	BOTALIAS: process.env.BOTALIAS ?? ''
+	ROOMS: process.env.ROOMS?.split(',') ?? []
 };
 
 const root = path.join(__dirname, '../../');

@@ -5,6 +5,5 @@ export interface Options {
 	PASS: string,
 	BOTNAME: string,
 	SSL: boolean,
-	ROOMS: string[],
-  BOTALIAS: string
+	ROOMS: string[]
 }

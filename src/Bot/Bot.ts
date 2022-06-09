@@ -17,7 +17,6 @@ export class Bot {
 	USER!: string;
 	PASS!: string;
 	ROOMS!: string[];
-	BOTALIAS!: string;
 
 	constructor(
 		connectionOptions: Options,
