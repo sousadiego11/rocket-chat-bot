@@ -3,7 +3,7 @@ export const matchReplaceUser = (text: string, userName: string) => text.replace
 export const getUserCommand = (text: string) => {
 	const scheduleKey = /!\D+ (.*)/i.exec(text);
 	const isCommand = /^!/.test(text.trim());
-	const command = /(!pausar|!retomar)/.exec(text);
+	const command = /(!pausar|!retomar|!listar)/.exec(text);
 
 	return { scheduleKey: scheduleKey ? scheduleKey[1] : '', command: command ? command[0] : null, isCommand };
 };

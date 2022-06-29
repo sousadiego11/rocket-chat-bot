@@ -3,6 +3,7 @@ import { driver } from '@rocket.chat/sdk';
 import { Options } from '../utils/interfaces';
 import { Scheduler } from '../Scheduler';
 import { replaceSpecialCharsLowercase, matchReplaceUser, responses, getUserCommand } from '../utils';
+import { messages } from '../utils/';
 export class Bot {
 	schedules = [];
 
@@ -28,8 +29,14 @@ export class Bot {
 		const schedules = this.scheduler.getSchedules;
 		const { command, isCommand, scheduleKey } = getUserCommand(message.msg);
 		const schedule = schedules.find((s) => s.key === scheduleKey.trim());
+		const availableMsgs = messages.map((m) => m.key).join('\n');
 
 		if (!isCommand) return false;
+
+		if (command === '!listar') {
+			await driver.sendToRoom(`Mensagens disponiveis:\n${availableMsgs}`, message.rid);
+			return true;
+		}
 
 		if (!command && isCommand || !schedule) {
 			await driver.sendToRoom('Desculpe, não entendi! :parrotnotfound:', message.rid);
