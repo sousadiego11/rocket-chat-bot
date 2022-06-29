@@ -1,5 +1,6 @@
 export interface Message {
   interval: string,
   message: string,
-  room: string
+  room: string,
+  key: string
 }

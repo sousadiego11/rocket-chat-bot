@@ -1,10 +1,10 @@
 import { driver } from '@rocket.chat/sdk';
 import nodeCron from 'node-cron';
 import { messages } from '../utils/';
-import { Message } from '../utils/interfaces/';
+import { Message, Schedules } from '../utils/interfaces/';
 
 export class Scheduler {
-	schedules: nodeCron.ScheduledTask[] = [];
+	schedules: Schedules[] = [];
 	rooms: string[] = [];
 
 	constructor(rooms: string[] = []) {
@@ -14,7 +14,7 @@ export class Scheduler {
 	async startSchedules() {
 		await this.buildSchedules();
 
-		this.schedules.forEach((s) => s.start());
+		this.schedules.forEach((s) => s.schedule.start());
 	}
 
 	async buildSchedules() {
@@ -23,7 +23,11 @@ export class Scheduler {
 			const schedule = nodeCron.schedule(message.interval, async () => {
 				await driver.sendToRoom(message.message, this.rooms[roomIndex]);
 			});
-			this.schedules.push(schedule);
+			this.schedules.push({key: message.key, schedule});
 		});
+	}
+
+	get getSchedules() {
+		return this.schedules;
 	}
 }
